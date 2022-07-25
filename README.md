@@ -2,6 +2,7 @@
 
 # Permissões
 
+```
 <manifest>
   <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -9,6 +10,7 @@
         android:requestLegacyExternalStorage="true"
   </application>
 </manifest>
+```
 
 # Evitar warning
 
