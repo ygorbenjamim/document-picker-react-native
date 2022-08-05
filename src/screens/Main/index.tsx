@@ -23,23 +23,31 @@ const Main: React.FC = () => {
   const encodeFile = async () => {
     try {
       if(!fileList) return; // Caso o estado seja undefined, retorne
-      fileList.map(async value => {
+     
+      fileList.forEach(async value => {
+        if(!value.uri) return;
         const stat = await RNFetchBlob.fs.stat(value.uri); // Formatando a uri do arquivo por fins de compatibilidade com a plataforma
 
-        let data = '';
-        RNFetchBlob.fs.readStream(stat.path, 'base64').then(ifstream => {
-          ifstream.open();
-          ifstream.onData(chunk => {
-            data += chunk;
-          });
-          ifstream.onError(err => {
-            console.log('oops', err);
-          });
-          ifstream.onEnd(() => {
-            value.base64 = 'data:application/pdf,base64' + data;
-          });
+        RNFetchBlob.fs.readFile(stat.path, 'base64').then(base64 => {
+          value.base64 = 'data:application/pdf;base64,' + base64;
         });
       });
+        
+      // Utilizado para arquivos muito grandes (Problema de base64 mal formatado)
+      //let data = '';
+      //RNFetchBlob.fs.readStream(stat.path, 'base64').then(ifstream => {
+      //  ifstream.open();
+      //  ifstream.onData(chunk => {
+      //    data += chunk;
+      //  });
+      //  ifstream.onError(err => {
+      //    console.log('oops', err);
+      //  });
+      //  ifstream.onEnd(() => {
+      //    value.base64 = 'data:application/pdf,base64' + data;
+      //  });
+      //});
+      //});
     } catch (error) {
       console.log(error);
     }
