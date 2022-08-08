@@ -15,7 +15,7 @@
 # Evitar warning
 
 diretório: node_modules/rn-fetch-blob/polyfill
-Alterar os imports dos arquivos Blob.js, Fetch.js, FileReader.js, XMLHttpRequest.js para:
+Alterar o import do 'RNFetchBlob' nos arquivos Blob.js, Fetch.js, FileReader.js, XMLHttpRequest.js para:
 
 ```
 // import RNFetchBlob from '../index.js'
