@@ -2,6 +2,8 @@
 
 # Permissões
 
+No diretório [seu projeto]/Android/app/src/main edite o arquivo AndroidManifest.xml e adicione as seguintes linhas:
+
 ```
 <manifest>
   <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -14,8 +16,8 @@
 
 # Evitar warning
 
-diretório: node_modules/rn-fetch-blob/polyfill
-Alterar o import do 'RNFetchBlob' nos arquivos Blob.js, Fetch.js, FileReader.js, XMLHttpRequest.js para:
+No diretório [seu projeto]/node_modules/rn-fetch-blob/polyfill
+Altere o import do 'RNFetchBlob' nos arquivos Blob.js, Fetch.js, FileReader.js, XMLHttpRequest.js para:
 
 ```
 // import RNFetchBlob from '../index.js'
