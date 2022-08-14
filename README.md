@@ -18,6 +18,8 @@ No diretório [seu projeto]/Android/app/src/main edite o arquivo AndroidManifest
 
 # Evitar warning
 
+Atualmente a lib utilizada possui uma atualização pendente e durante o desenvolvimento, são apresentados warning's que pode ser resolvido nos arquivos da lib até que os proprietários lancem uma atualização no repositório npm.
+
 No diretório [seu projeto]/node_modules/rn-fetch-blob/polyfill
 Altere o import do 'RNFetchBlob' nos arquivos Blob.js, Fetch.js, FileReader.js, XMLHttpRequest.js para:
 
