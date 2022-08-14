@@ -1,5 +1,7 @@
 # DocumentPicker
 
+Esse projeto simples permite que um arquivo PDF(podendo editar para todos os tipos) seja selecionado do explorador de arquivos do smartphone Android e o seu conteúdo é armazenado em um estado. O método está compatível com qualquer versão do Android e suas API's.
+
 # Permissões
 
 No diretório [seu projeto]/Android/app/src/main edite o arquivo AndroidManifest.xml e adicione as seguintes linhas:
