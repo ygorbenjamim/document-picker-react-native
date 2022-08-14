@@ -55,25 +55,27 @@ const Main: React.FC = () => {
 
   const handleAdd = async () => {
     try {
-      // Abrindo o explorado com limitação para selecionar apenas PDF
-      const response = await DocumentPicker.pickMultiple({
+      // Para alterar para pickMiltiple, remova os colchetes iniciais
+      const response = [await DocumentPicker.pickSingle({
         type: [DocumentPicker.types.pdf],
-      });
+        copyTo: 'cachesDirectory', // Informando para copiar o arquivo selecionado em cache para evitar problemas de permissões no Android
+        mode: 'import',
+      })];
 
-      if(!fileList) return; // Caso fileList seja undefined, retorne
-
-      // Armazenando itens do response em uma constante 'item'
+      if(!fileList) return;
       response.map(value => {
-        const item: IFileList = {
+        const item: IExamFile = {
           name: value.name,
+          examType: type,
           size: value.size,
-          uri: value.uri,
+          uri: value.fileCopyUri?.toString(), // Utilizar o fileCopyUri como uri quando o arquivo estiver em cache
           base64: '',
         };
 
-        // Verificando duplicidade do item selecionado
+        // Verificação de duplicidade
         const exist = fileList.some(file => file.name === item.name);
         if(!exist) setFileList([...fileList, item]);
+        else Alert.alert('Duplicidade de documento', 'Esse mesmo arquivo já foi anexado.');
       });
 
       encodeFile();
